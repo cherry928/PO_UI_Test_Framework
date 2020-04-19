@@ -16,6 +16,7 @@ class MainPage:
 
     def get_companyname(self): # 获取公司名称
         value = self.companyname_showbox.get_attribute('title')
+        logger.info('获取公司名成功，公司名是：' + str(value))
         return value
 
     def goto_myzone(self): # 进入我的地盘菜单
@@ -31,5 +32,9 @@ class MainPage:
 
 if __name__=='__main__':
     mainPage = MainPage()
+    commanyname = mainPage.get_companyname()
+
+    mainPage.goto_myzone()
+
     username = mainPage.get_username()
-    print(username)
+    print(commanyname, username)
