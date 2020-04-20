@@ -9,7 +9,7 @@ class LogUtils:
         self.__logfile_path = logfile_path
         self.logger = logging.getLogger()
         self.logger.setLevel(level=logging.INFO)
-        file_log = logging.FileHandler(self.__logfile_path)
+        file_log = logging.FileHandler(self.__logfile_path, 'w')
         formatter = logging.Formatter('file:%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_log.setFormatter(formatter)
         self.logger.addHandler(file_log)

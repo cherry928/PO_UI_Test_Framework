@@ -32,6 +32,20 @@ class Basepage(object):
         logger.info('获取网页标题，标题是 %s ' % value)
         return value
 
+    # 获取元素属性值
+    def get_attribute_title(self, element_info):
+        element = self.find_element(element_info)
+        title = element.get_attribute('title')
+        logger.info('[%s]元素获取title，为：%s' % (element_info['element_name'], title))
+        return title
+
+    # 获取元素text
+    def get_text(self, element_info):
+        element = self.find_element(element_info)
+        text = element.text
+        logger.info('[%s]元素获取成功，为：%s' % (element_info['element_name'], text))
+        return text
+
     # 元素封装操作
     def find_element(self, element_info):
         locator_type_name = element_info['locator_type']
@@ -51,18 +65,46 @@ class Basepage(object):
             locator_type = By.NAME
         elif locator_type_name == 'partial_link_text':
             locator_type = By.PARTIAL_LINK_TEXT
+        elif locator_type_name == 'tag_name':
+            locator_type = By.TAG_NAME
 
         element = WebDriverWait(self.driver,locator_timeout)\
             .until(lambda x:x.find_element(locator_type, locator_value_info))
         logger.info('[%s]元素识别成功'%element_info['element_name'])
         return element
 
+    # 点击
     def click(self, element_info):
         element = self.find_element(element_info)
         element.click()
         logger.info('[%s]元素进行点击操作'%element_info['element_name'])
 
+    # 输入值
     def input(self, element_info, content):
         element = self.find_element(element_info)
         element.send_keys(content)
         logger.info('[%s]元素输入内容:%s'% (element_info['element_name'], content))
+
+    # 清除输入框内容
+    def clear(self, element_info):
+        element = self.find_element(element_info)
+        element.clear()
+        logger.info('[%s]元素内容清除成功'%element_info['element_name'])
+
+    # 切换frame
+    def switch_to_frame(self, element_info):
+        element = self.find_element(element_info)
+        self.driver.switch_to.frame(element)
+        logger.info('已经切换到[%s]' % element_info['element_name'])
+
+    # 切换到默认frame
+    def switch_to_default_content(self):
+        self.driver.switch_to.default_content()
+        logger.info('切换到default_frame')
+
+    # 滑到指定元素
+    def slide_specified_element(self, element_info):
+        element = self.find_element(element_info)
+        self.driver.execute_script('arguments[0].scrollIntoView();', element)
+        logger.info('滑到指定元素：%s按钮成功'%element_info['element_name'])
+
