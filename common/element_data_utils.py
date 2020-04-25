@@ -7,7 +7,7 @@ excel_path = os.path.join(current_path, '../element_info_data/element_infos.xlsx
 class ElementdataUtils:
     def __init__(self, page_name, element_path=excel_path):
         self.element_path = element_path
-        self.workbook = xlrd.open_workbook(excel_path)
+        self.workbook = xlrd.open_workbook(self.element_path)
         self.sheet = self.workbook.sheet_by_name(page_name)
         self.row_count = self.sheet.nrows
 
@@ -24,5 +24,5 @@ class ElementdataUtils:
         return element_infos
 
 if __name__=='__main__':
-    elements = ElementdataUtils('login_page').get_element_info()
+    elements = ElementdataUtils('create_new_iteration_page').get_element_info()
     print(elements)

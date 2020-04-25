@@ -1,36 +1,22 @@
 from element_infos.login_page import LoginPage
 from common.base_page import Basepage
 from common.chrome_driver import chromedriver
+from common.element_data_utils import ElementdataUtils
 
 class MainPage(Basepage):
     def __init__(self, driver):  # 属性==》页面的控件
         super().__init__(driver)
-        loginPage = LoginPage(chromedriver.get_driver)
-        loginPage.open_url('http://127.0.0.1/zentaopms/www/index.php?m=user&f=login')
-        loginPage.input_username('admin')
-        loginPage.input_password('123456aA')
-        loginPage.click_login()
-        self.companyname_showbox = {'element_name':'公司名字',
-                                  'locator_type':'xpath',
-                                  'locator_value':'//h1[@id="companyname"]',
-                                  'timeout': 5}
-        self.myzone_menu = {'element_name':'我的地盘',
-                            'locator_type':'xpath',
-                            'locator_value':'//li[@data-id="my"]',
-                            'timeout': 5}
-        self.product_menu = {'element_name':'产品',
-                            'locator_type':'xpath',
-                            'locator_value':'//li[@data-id="product"]',
-                            'timeout': 5}
-        self.project_menu = {'element_name':'迭代',
-                            'locator_type':'xpath',
-                            'locator_value':'//li[@data-id="project"]',
-                            'timeout': 5}
-        self.username_showspan = {'element_name':'用户名字',
-                                  'locator_type':'xpath',
-                                  'locator_value':'//span[@class="user-name"]',
-                                  'timeout': 5}
-
+        self.loginPage = LoginPage(driver)
+        self.loginPage.open_url('http://106.53.50.202:8999/zentao2/www/user-login-L3plbnRhbzYvd3d3Lw==.html')
+        self.loginPage.input_username('chenjuan')
+        self.loginPage.input_password('1q2w3e4r,')
+        self.loginPage.click_login()
+        elements = ElementdataUtils('main_page').get_element_info()
+        self.companyname_showbox = elements['companyname_showbox']
+        self.myzone_menu = elements['myzone_menu']
+        self.product_menu = elements['product_menu']
+        self.project_menu = elements['project_menu']
+        self.username_showspan = elements['username_showspan']
 
     def get_companyname(self):   # 获取公司名称
         value = self.get_attribute_title(self.companyname_showbox)
@@ -52,10 +38,10 @@ class MainPage(Basepage):
 mainpage = MainPage(chromedriver.get_driver)
 
 if __name__=='__main__':
-    mainPage = MainPage(chromedriver.get_driver)
-    commanyname = mainPage.get_companyname()
-    mainPage.goto_myzone()
-    mainPage.goto_product()
-    mainPage.goto_project()
-    username = mainPage.get_username()
+    mainPageA = MainPage(chromedriver.get_driver)
+    commanyname = mainPageA.get_companyname()
+    mainPageA.goto_myzone()
+    mainPageA.goto_product()
+    mainPageA.goto_project()
+    username = mainPageA.get_username()
     print(commanyname, username)

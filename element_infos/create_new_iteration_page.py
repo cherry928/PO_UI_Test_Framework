@@ -2,67 +2,27 @@
 from common.base_page import Basepage
 from common.chrome_driver import chromedriver
 from element_infos.main_page import mainpage
+from common.element_data_utils import ElementdataUtils
 
 class CreateNewIterationPage(Basepage):
     def __init__(self, driver):
         super().__init__(driver)
         mainpage.goto_project()
-        self.create_iteration = {'element_name': '添加迭代',
-                                 'locator_type': 'xpath',
-                                 'locator_value': '//div[@id="pageActions"]',
-                                 'timeout': 5}
-        self.iteration_name = {'element_name': '迭代名称',
-                               'locator_type': 'xpath',
-                               'locator_value': '//input[@id="name"]',
-                               'timeout': 5}
-        self.iteration_code = {'element_name': '迭代代号',
-                               'locator_type': 'xpath',
-                               'locator_value': '//input[@id="code"]',
-                               'timeout': 5}
-        self.start_date = {'element_name': '起始日期',
-                           'locator_type': 'xpath',
-                           'locator_value': '//input[@id="begin"]',
-                           'timeout': 5}
-        self.close_date = {'element_name': '截止日期',
-                           'locator_type': 'xpath',
-                           'locator_value': '//input[@id="end"]',
-                           'timeout': 5}
-        self.team_name = {'element_name': '团队名称',
-                          'locator_type': 'xpath',
-                          'locator_value': '//input[@id="team"]',
-                          'timeout': 5}
-        self.iteration_type = {'element_name': '迭代类型',
-                               'locator_type': 'xpath',
-                               'locator_value': '//select[@id="type"]',
-                               'timeout': 5}
-        self.chose_iteration_type = {'element_name': '选择迭代类型',
-                                     'locator_type': 'xpath',
-                                     'locator_value': '//option[@title="长期迭代"]',
-                                     'timeout': 5}
-        self.related_items = {'element_name': '关联项目',
-                              'locator_type': 'xpath',
-                              'locator_value': '//div[@id="products0_chosen"]',
-                              'timeout': 5}
-        self.chose_related_items = {'element_name': '选择关联项目',
-                                    'locator_type': 'xpath',
-                                    'locator_value': '//li[@title="新梦想"]',
-                                    'timeout': 5}
-        self.switch_to_content_frame = {'element_name': 'content_frame',
-                                        'locator_type': 'xpath',
-                                        'locator_value': '//iframe[@class="ke-edit-iframe"]',
-                                        'timeout': 5}
-        self.iterative_description = {'element_name': '迭代描述',
-                                      'locator_type': 'xpath',
-                                      'locator_value': '//body[@class="article-content"]',
-                                      'timeout': 5}
-        self.preservation = {'element_name': '保存',
-                             'locator_type': 'xpath',
-                             'locator_value': '//button[@id="submit"]',
-                             'timeout': 5}
-        self.close_button = {'element_name': '关闭',
-                             'locator_type': 'xpath',
-                             'locator_value': '//a[@class="close"]',
-                             'timeout': 5}
+        elements = ElementdataUtils('create_new_iteration_page').get_element_info()
+        self.create_iteration = elements['create_iteration']
+        self.iteration_name = elements['iteration_name']
+        self.iteration_code = elements['iteration_code']
+        self.start_date = elements['start_date']
+        self.close_date = elements['close_date']
+        self.team_name = elements['team_name']
+        self.iteration_type = elements['iteration_type']
+        self.chose_iteration_type = elements['chose_iteration_type']
+        self.related_items = elements['related_items']
+        self.chose_related_items = elements['chose_related_items']
+        self.switch_to_content_frame = elements['switch_to_content_frame']
+        self.iterative_description = elements['iterative_description']
+        self.preservation = elements['preservation']
+        self.close_button = elements['close_button']
 
     def click_create_iteration(self):    # 点击添加迭代按钮
         self.click(self.create_iteration)
@@ -124,20 +84,20 @@ class CreateNewIterationPage(Basepage):
 if  __name__ == '__main__':
     createnewiterationpage = CreateNewIterationPage(chromedriver.get_driver)
     createnewiterationpage.click_create_iteration()
-    createnewiterationpage.input_iteration_name('公共研发组sprint1')
-    createnewiterationpage.input_iteration_code('sprint1')
+    createnewiterationpage.input_iteration_name('公共研发组sprint2')
+    createnewiterationpage.input_iteration_code('sprint2')
     createnewiterationpage.clear_data_content()
-    createnewiterationpage.input_start_date('2020-04-19')
+    createnewiterationpage.input_start_date('2020-04-24')
     createnewiterationpage.click_start_date()
-    createnewiterationpage.input_close_date('2020-08-20')
+    createnewiterationpage.input_close_date('2020-05-20')
     createnewiterationpage.click_close_date()
-    createnewiterationpage.input_team_name('公共研发组sprint1')
+    createnewiterationpage.input_team_name('公共研发组sprint2')
     createnewiterationpage.click_iteration_type()
     createnewiterationpage.click_chose_iteration_type()
-    # createnewiterationpage.click_related_items()
-    # createnewiterationpage.click_chose_related_items()
+    createnewiterationpage.click_related_items()
+    createnewiterationpage.click_chose_related_items()
     createnewiterationpage.switchto_frame()
-    createnewiterationpage.input_iterative_description('公共研发组sprint1迭代')
+    createnewiterationpage.input_iterative_description('公共研发组sprint2迭代')
     createnewiterationpage.switchto_default_content()
     createnewiterationpage.slide_element()
     createnewiterationpage.click_preservation()
