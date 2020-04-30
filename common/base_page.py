@@ -158,7 +158,7 @@ class Basepage(object):
         self.find_element(element_info).send_keys(Keys.TAB)
         ActionChains(self.driver).send_keys(Keys.TAB).perform()
 
-    def BACKSPACE(self, element_info, value):
+    def backspace(self, element_info, value):
         element = self.find_element(element_info)
         element.send_keys(value)
         element.send_keys(Keys.BACKSPACE)
