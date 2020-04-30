@@ -1,6 +1,7 @@
 from common.base_page import Basepage
-from common.chrome_driver import chromedriver
+# from common.chrome_driver import chromedriver
 from common.element_data_utils import ElementdataUtils
+from common.browser import Browser
 
 
 class LoginPage(Basepage):
@@ -21,7 +22,8 @@ class LoginPage(Basepage):
         self.click(self.login_button)
 
 if __name__=='__main__':
-    loginPage = LoginPage(chromedriver.get_driver)
+    driver = Browser().get_chrome_dirver()
+    loginPage = LoginPage(driver)
     loginPage.open_url('http://106.53.50.202:8999/zentao2/www/user-login-L3plbnRhbzYvd3d3Lw==.html')
     loginPage.input_username('chenjuan')
     loginPage.input_password('1q2w3e4r,')

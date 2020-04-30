@@ -4,6 +4,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from common.log_utils import logger
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 class Basepage(object):
     def __init__(self, driver):
@@ -108,3 +111,54 @@ class Basepage(object):
         self.driver.execute_script('arguments[0].scrollIntoView();', element)
         logger.info('滑到指定元素：%s按钮成功'%element_info['element_name'])
 
+    # windows句柄处理
+    def hand(self, value):
+        handles = self.driver.window_handles
+        logger.info('所有句柄是%s' % handles)
+        self.driver.switch_to.window(handles[value])
+        logger.info('跳转的句柄是%s' % handles[value])
+
+    # alert处理
+    def alert(self, timeout=5, Type='', Selector='', Value = ''):
+        result = WebDriverWait(self.driver, timeout, poll_frequency=0.2).until(EC.alert_is_present())
+        if Type == 'yes':
+            if Selector == 'alert':
+                result.accept()
+            elif Selector == 'confirm':
+                result.accept()
+                result.accept()
+            elif Selector == 'prompt':
+                result.send_keys(Value)
+                result.accept()
+                result.accept()
+        elif Type == 'no':
+            if Selector == 'alert':
+                result.dismiss()
+            elif Selector == 'confirm':
+                result.dismiss()
+                result.accept()
+            elif Selector == 'prompt':
+                result.dismiss()
+
+    # 鼠标常用操作
+    def move_to_element(self, element_info):
+        element = self.find_element(element_info)
+        ActionChains(self.driver).move_to_element(element).perform()
+
+    def click_and_hold(self, element_info):
+        element = self.find_element(element_info)
+        ActionChains(self.driver).click_and_hold(element).pause(10).release(element).perform()
+
+    def context_click(self, element_info):
+        element = self.find_element(element_info)
+        ActionChains(self.driver).context_click(element).perform()
+
+    # 键盘常用操作
+    def keys_tab(self, element_info):
+        self.find_element(element_info).send_keys(Keys.TAB)
+        ActionChains(self.driver).send_keys(Keys.TAB).perform()
+
+    def BACKSPACE(self, element_info, value):
+        element = self.find_element(element_info)
+        element.send_keys(value)
+        element.send_keys(Keys.BACKSPACE)
