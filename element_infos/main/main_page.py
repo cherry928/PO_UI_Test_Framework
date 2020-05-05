@@ -1,4 +1,4 @@
-from element_infos.login_page import LoginPage
+from element_infos.login.login_page import LoginPage
 from common.base_page import Basepage
 from common.chrome_driver import chromedriver
 from common.element_data_utils import ElementdataUtils

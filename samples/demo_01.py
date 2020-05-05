@@ -1,7 +1,7 @@
 import time
 from common.chrome_driver import chromedriver
 from selenium.webdriver.common.by import By
-from element_infos.login_page import LoginPage
+from element_infos.login.login_page import LoginPage
 
 
 driver = chromedriver.get_driver

@@ -1,7 +1,7 @@
 # 添加新迭代页面
 from common.base_page import Basepage
 from common.chrome_driver import chromedriver
-from element_infos.main_page import mainpage
+from element_infos.main.main_page import mainpage
 from common.element_data_utils import ElementdataUtils
 
 class CreateNewIterationPage(Basepage):

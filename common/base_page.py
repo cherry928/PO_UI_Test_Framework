@@ -1,4 +1,3 @@
-import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -7,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from common.config_utils import config
 
 class Basepage(object):
     def __init__(self, driver):
@@ -29,6 +29,9 @@ class Basepage(object):
     def refresh(self):
         self.driver.refresh()
         logger.info('浏览器刷新操作')
+
+    def implicitly_wait(self, seconds=config.time_out):
+        self.driver.implicitly_wait(seconds)
 
     def get_title(self):
         value = self.driver.title
@@ -96,6 +99,7 @@ class Basepage(object):
 
     # 切换frame
     def switch_to_frame(self, element_info):
+        self.wait(2)
         element = self.find_element(element_info)
         self.driver.switch_to.frame(element)
         logger.info('已经切换到[%s]' % element_info['element_name'])
@@ -162,3 +166,6 @@ class Basepage(object):
         element = self.find_element(element_info)
         element.send_keys(value)
         element.send_keys(Keys.BACKSPACE)
+
+    def wait(self, seconds=config.time_out):
+        time.sleep(seconds)

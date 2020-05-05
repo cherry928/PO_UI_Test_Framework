@@ -3,7 +3,7 @@ import time
 from common.base_page import Basepage
 from common.chrome_driver import chromedriver
 from common.element_data_utils import ElementdataUtils
-from element_infos.main_page import mainpage
+from element_infos.main.main_page import mainpage
 
 class IterationTeamManagement(Basepage):
     def __init__(self, driver):
