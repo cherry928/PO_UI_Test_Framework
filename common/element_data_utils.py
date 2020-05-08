@@ -2,8 +2,9 @@ import os
 from common.config_utils import config
 from common.excel_utils import ExcelUtils
 
-current_path = os.path.dirname(__file__)
-excel_path_value = os.path.join(current_path, '../element_info_data/element_infos.xlsx')
+current_path = os.path.abspath(os.path.dirname(__file__))
+excel_path_value = os.path.join( current_path , '../element_info_data/element_infos.xlsx')
+print(excel_path_value)
 
 class ElementdataUtils:
     """

@@ -5,10 +5,11 @@
 # @time:2020/5/5 4:37 下午
 import os
 import xlrd
+from common.config_utils import config
 
 
-current_path = os.path.dirname(__file__)
-excel_path = os.path.join(current_path, '../element_info_data/element_infos.xlsx')
+current_path = os.path.abspath(os.path.dirname(__file__))
+excel_path = os.path.join( current_path , '..', config.testdata_path)
 
 class ExcelUtils:
     """

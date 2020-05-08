@@ -40,6 +40,21 @@ class Config_utils:
         return driver_path_value
 
     @property
+    def testdata_path(self):
+        testdata_path_value = self.read_ini('default', 'testdata_path')
+        return testdata_path_value
+
+    @property
+    def report_path(self):
+        report_path_value = self.read_ini('default', 'report_path')
+        return report_path_value
+
+    @property
+    def case_path(self):
+        case_path_value = self.read_ini('default', 'case_path')
+        return case_path_value
+
+    @property
     def time_out(self):
         driver_time_value = float(self.read_ini('default', 'time_out'))
         return driver_time_value
@@ -68,4 +83,4 @@ config = Config_utils()
 
 if __name__=='__main__':
     config_u = Config_utils()
-    print((config_u.get_log_level))
+    print((config_u.case_path))

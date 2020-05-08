@@ -7,6 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from common.config_utils import config
+from common import HTMLTestReportCN
+
 
 class Basepage(object):
     def __init__(self, driver):
@@ -95,6 +97,7 @@ class Basepage(object):
             logger.info('[%s]元素识别成功'%element_info['element_name'])
         except Exception as e:
             logger.error('[%s]元素不能识别，原因是%s' % (element_info['element_name'], e.__str__()))
+            self.screenshot_as_file()
         return element
 
     # 点击
@@ -192,12 +195,17 @@ class Basepage(object):
     def wait(self, seconds=config.time_out):
         time.sleep(seconds)
 
-    def screenshot_as_file(self, *screenshot_path):
-        current_dir = os.path.dirname(__file__)
-        if len(screenshot_path) == 0:
-            screenshot_filepath = config.screen_shot_path
-        else:
-            screenshot_filepath = screenshot_path[0]
-        now = time.strftime('%Y_%m_%d_%H_%M_%S')
-        screenshot_filepath = os.path.join(current_dir, '..', screenshot_filepath, 'UITest_%s.png' % now)
-        self.driver.get_screenshot_as_file(screenshot_filepath)
+    # def screenshot_as_file(self, *screenshot_path):
+    #     current_dir = os.path.dirname(__file__)
+    #     if len(screenshot_path) == 0:
+    #         screenshot_filepath = config.screen_shot_path
+    #     else:
+    #         screenshot_filepath = screenshot_path[0]
+    #     now = time.strftime('%Y_%m_%d_%H_%M_%S')
+    #     screenshot_filepath = os.path.join(current_dir, '..', screenshot_filepath, 'UITest_%s.png' % now)
+    #     self.driver.get_screenshot_as_file(screenshot_filepath)
+
+    def screenshot_as_file(self):
+        report_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', config.report_path)
+        report_dir = HTMLTestReportCN.ReportDirectory(report_path)
+        report_dir.get_screenshot(self.driver)
