@@ -12,7 +12,8 @@ class demo_02(Basepage):
         self.hand(value)
 
     def alert_all(self, type, selector, value=''):
-        self.alert(Type=type, Selector=selector, Value =value)
+        value1 = self.alert(Type=type, Selector=selector, Value =value)
+        print(value1)
 
 
 
@@ -33,10 +34,10 @@ if __name__=='__main__':
     # driver.find_element(By.XPATH, '//input[@name="edit"]').send_keys('cherry')
 
     # alert处理
-    # driver.find_element(By.XPATH, '//input[@name="alterbutton"]').click()
-    # time.sleep(1)
-    # demo02.alert_all(type='no', selector='alert')
-    # # confirm
+    driver.find_element(By.XPATH, '//input[@name="alterbutton"]').click()
+    time.sleep(1)
+    demo02.alert_all(type='yes', selector='alert')
+    # confirm
     # driver.find_element(By.XPATH, '//input[@name="confirmbutton"]').click()
     # time.sleep(1)
     # demo02.alert_all(type='no', selector='confirm')
