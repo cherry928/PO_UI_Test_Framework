@@ -10,7 +10,7 @@ class LoginTest(SeleniumBaseCase):
     def setUp(self) -> None:
         super().setUp()
         print('hello!')
-        self.test_class_data = TestDataUtils('login_suite', 'LoginTest').convert_exceldata_to_testdata()
+        self.test_class_data = TestDataUtils('login_suite', 'LoginTest').convert_exceldata_to_testdata()  # 取出excel的数据
 
     def test_login_success(self):
         test_function_data = self.test_class_data['test_login_success']

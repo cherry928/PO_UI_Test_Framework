@@ -205,6 +205,7 @@ class Basepage(object):
     #     screenshot_filepath = os.path.join(current_dir, '..', screenshot_filepath, 'UITest_%s.png' % now)
     #     self.driver.get_screenshot_as_file(screenshot_filepath)
 
+    # 截图
     def screenshot_as_file(self):
         report_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', config.report_path)
         report_dir = HTMLTestReportCN.ReportDirectory(report_path)

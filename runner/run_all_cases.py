@@ -14,7 +14,10 @@ case_path = os.path.join( current_path , '..', config.case_path)
 report_path = os.path.join( current_path , '..', config.report_path)
 
 class RunAllCases:
-
+    """
+    执行case_path目录下所有以test.py结尾的文件
+    输出的测试报告在report_path目录下
+    """
     def __init__(self):
         self.test_case_path = case_path
         self.report_path = report_path
