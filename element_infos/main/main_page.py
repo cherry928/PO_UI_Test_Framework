@@ -6,7 +6,7 @@ from common.element_data_utils import ElementdataUtils
 class MainPage(Basepage):
     def __init__(self, driver):  # 属性==》页面的控件
         super().__init__(driver)
-        elements = ElementdataUtils().get_element_info('main_page')
+        elements = ElementdataUtils('main', 'main_page').get_element_info()
         self.companyname_showbox = elements['companyname_showbox']
         self.myzone_menu = elements['myzone_menu']
         self.product_menu = elements['product_menu']

@@ -6,7 +6,7 @@ from common.browser import Browser
 class LoginPage(Basepage):
     def __init__(self, driver):  # 属性==》页面的控件
         super().__init__(driver)
-        elements = ElementdataUtils().get_element_info('login_page')
+        elements = ElementdataUtils('login','login_page').get_element_info()
         self.username_inputbox = elements['username_inputbox']
         self.password_inputbox = elements['password_inputbox']
         self.login_button = elements['login_button']

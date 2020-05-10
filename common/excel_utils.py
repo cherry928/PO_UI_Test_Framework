@@ -10,6 +10,7 @@ from common.config_utils import config
 
 current_path = os.path.abspath(os.path.dirname(__file__))
 excel_path = os.path.join( current_path , '..', config.testdata_path)
+# print(excel_path)
 
 class ExcelUtils:
     """

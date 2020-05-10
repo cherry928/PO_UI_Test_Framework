@@ -7,11 +7,13 @@ class LoginTest(SeleniumBaseCase):
     """
     用例层，登录测试用例
     """
+    test_class_data = TestDataUtils('login_suite', 'login_test').convert_exceldata_to_testdata()  # 类属性 取出excel的数据
+
     def setUp(self) -> None:
         super().setUp()
         print('hello!')
-        self.test_class_data = TestDataUtils('login_suite', 'LoginTest').convert_exceldata_to_testdata()  # 取出excel的数据
 
+    @unittest.skipIf(test_class_data['test_login_success']['is_not'], '')  # 判断测试用例是否被忽略
     def test_login_success(self):
         test_function_data = self.test_class_data['test_login_success']
         print(test_function_data)
@@ -21,6 +23,7 @@ class LoginTest(SeleniumBaseCase):
         actual_reslut = main_page.get_username()
         self.assertEqual(actual_reslut, test_function_data['excepted_result'], 'test_login_success用例执行失败')
 
+    @unittest.skipIf(test_class_data['test_login_fail']['is_not'], '')
     def test_login_fail(self):
         test_function_data = self.test_class_data['test_login_fail']
         print(test_function_data)
@@ -32,4 +35,5 @@ class LoginTest(SeleniumBaseCase):
 
 
 if __name__ == '__main__':
+
     unittest.main()

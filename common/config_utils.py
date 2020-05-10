@@ -79,8 +79,43 @@ class Config_utils:
         driver_name_value = self.read_ini('default', 'driver_name')
         return driver_name_value
 
+    @property
+    def element_info_path(self):
+        element_info_path_value = self.read_ini('default', 'element_info_path')
+        return element_info_path_value
+
+    @property
+    def smtp_server(self):
+        smtp_server_value = self.read_ini('email', 'smtp_server')
+        return smtp_server_value
+
+    @property
+    def smtp_sender(self):
+        smtp_sender_value = self.read_ini('email', 'smtp_sender')
+        return smtp_sender_value
+
+    @property
+    def smtp_senderpassword(self):
+        smtp_senderpassword_value = self.read_ini('email', 'smtp_senderpassword')
+        return smtp_senderpassword_value
+
+    @property
+    def smtp_receiver(self):
+        smtp_receiver_value = self.read_ini('email', 'smtp_receiver')
+        return smtp_receiver_value
+
+    @property
+    def smtp_cc(self):
+        smtp_cc_value = self.read_ini('email', 'smtp_cc')
+        return smtp_cc_value
+
+    @property
+    def smtp_subject(self):
+        smtp_subject_value = self.read_ini('email', 'smtp_subject')
+        return smtp_subject_value
+
 config = Config_utils()
 
 if __name__=='__main__':
     config_u = Config_utils()
-    print((config_u.case_path))
+    print((config_u.testdata_path))

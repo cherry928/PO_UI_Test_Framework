@@ -8,6 +8,7 @@ import os
 import unittest
 from common import HTMLTestReportCN
 from common.config_utils import config
+from common.mail_utils import EmailUtils
 
 current_path = os.path.abspath(os.path.dirname(__file__))
 case_path = os.path.join( current_path , '..', config.case_path)
@@ -33,6 +34,7 @@ class RunAllCases:
         report_dir = HTMLTestReportCN.ReportDirectory(self.report_path)
         report_dir.create_dir(self.title)
         report_path = HTMLTestReportCN.GlobalMsg.get_value('report_path')
+        dir_path = HTMLTestReportCN.GlobalMsg.get_value('dir_path')
         fp = open(report_path, 'wb')
         runner = HTMLTestReportCN.HTMLTestRunner(stream=fp,
                                                  title=self.title,
@@ -40,6 +42,8 @@ class RunAllCases:
                                                  tester='cherry')
         runner.run(all_suite)
         fp.close()
+        return dir_path
 
 if __name__ == '__main__':
-    RunAllCases().run()
+    dir_path = RunAllCases().run()
+    EmailUtils('Python自动化测试报告', dir_path).zip_send_mail()

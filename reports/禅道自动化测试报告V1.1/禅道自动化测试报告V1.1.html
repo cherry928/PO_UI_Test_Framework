@@ -240,7 +240,7 @@ table       { font-size: 100%; }
                         sliced: true,
                         selected: true
                     },
-                    ['错误', 2]
+                    ['错误', 0]
                 ]
             }]
         }, function(c) {
@@ -375,11 +375,11 @@ function html_escape(s) {
 <div style="width: 650px; float: left;">
     <h1 style="font-family: Microsoft YaHei">禅道自动化测试报告</h1>
     <p class='attribute'><strong>测试人员 : </strong> cherry</p>
-<p class='attribute'><strong>开始时间 : </strong> 2020-05-08 22:01:10</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:30.438141</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 2，错误 2，通过率 = 0.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2020-05-10 09:09:07</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:00.001095</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 0，通过率 = 0.00 %</p>
 <p class='attribute'><strong>失败用例合集 : </strong> <ol style='float: left;'>无</ol></p>
-<p class='attribute'><strong>错误用例合集 : </strong> <div class='panel-default' style='float: left;'><a class='showDetail' data-toggle='collapse' href='#errorCaseOl' style='text-decoration: none;'>点击查看</a></div><ol id='errorCaseOl' class='collapse' style='float: left;'><li>test_login_fail (login_suite.login_test.LoginTest)</li><li>test_login_success (login_suite.login_test.LoginTest)</li></ol></p>
+<p class='attribute'><strong>错误用例合集 : </strong> <ol style='float: left;'>无</ol></p>
 
     <p class='description'>UI-test</p>
 </div>
@@ -390,11 +390,11 @@ function html_escape(s) {
 
 <div style="width: 500px; clear: both;">
 <p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 0.00% }</a>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 0.00 % }</a>
 <a class="btn btn-success" href='javascript:showCase(2)'>通过{ 0 }</a>
 <a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
-<a class="btn btn-warning" href='javascript:showCase(3)'>错误{ 2 }</a>
-<a class="btn btn-info" href='javascript:showCase(4)'>所有{ 2 }</a>
+<a class="btn btn-warning" href='javascript:showCase(3)'>错误{ 0 }</a>
+<a class="btn btn-info" href='javascript:showCase(4)'>所有{ 0 }</a>
 </p>
 </div>
 <table id='result_table' class="table table-condensed table-bordered table-hover">
@@ -419,101 +419,14 @@ function html_escape(s) {
     <td>详细</td>
 </tr>
 
-<tr class='errorClass warning'>
-    <td>LoginTest</td>
-    <td></td>
-    <td class="text-center">2</td>
-    <td class="text-center">0</td>
-    <td class="text-center">0</td>
-    <td class="text-center">2</td>
-    <td class="text-center">30.44秒</td>
-    <td class="text-center"><a href="javascript:showClassDetail('c1',2)" class="detail" id='c1'>详细</a></td>
-</tr>
-
-<tr id='et1_1' class='none'>
-    <td class='errorCase' style="vertical-align: middle"><div class='testcase'>test_login_fail</div></td>
-    <td style="vertical-align: middle">验证错误的用户名和密码能否成功处理</td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_et1_1' type="button"  class="btn btn-xs collapsed" data-toggle="collapse" data-target='#div_et1_1'>错误</button>
-    <div id='div_et1_1' class="collapse">  -->
-
-    <!-- 默认展开错误信息 -Findyou /  修复失败按钮的颜色 -- Gelomen -->
-    <button id='btn_et1_1' type="button"  class="btn btn-xs" data-toggle="collapse" data-target='#div_et1_1,#div_et1_1_screenshot'>错误</button>
-    <div id='div_et1_1' class="collapse in">
-    <pre style="text-align:left">
-    
-et1_1: hello!
-{'test_name': '验证错误的用户名和密码能否成功处理', 'isnot': '是', 'excepted_result': '登录失败，请检查您的用户名或密码是否填写正确。', 'test_parameter': {'username': 'chenjuan1', 'password': '1q2w3e4r'}}
-errorImg[1.png]errorImg, browser[chrome(81.0.4044.138)]browser
-Traceback (most recent call last):
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/testcases/login_suite/login_test.py", line 29, in test_login_fail
-    actual_result = login_action.login_fail(test_function_data['test_parameter'].get('username'), test_function_data['test_parameter'].get('password'))
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/actions/login_action.py", line 28, in login_fail
-    self.login_action(username, password)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/actions/login_action.py", line 16, in login_action
-    self.login_page.input_username(username)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/element_infos/login/login_page.py", line 15, in input_username
-    self.input(self.username_inputbox, username)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/common/base_page.py", line 113, in input
-    element = self.find_element(element_info)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/common/base_page.py", line 101, in find_element
-    return element
-UnboundLocalError: local variable 'element' referenced before assignment
-
-
-    </pre>
-    </div>
-    </td>
-    <td class="text-center" style="vertical-align: middle"><div id='div_et1_1_screenshot' class="collapse in">浏览器版本：<div style="color: brown;">chrome(81.0.4044.138)</div></br>截图：</br><a class="screenshot" href="javascript:void(0)" img="image/1.png">img_1.png</a></div></td>
-</tr>
-
-<tr id='et1_2' class='none'>
-    <td class='errorCase' style="vertical-align: middle"><div class='testcase'>test_login_success</div></td>
-    <td style="vertical-align: middle">验证是否能成功进行登录</td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_et1_2' type="button"  class="btn btn-xs collapsed" data-toggle="collapse" data-target='#div_et1_2'>错误</button>
-    <div id='div_et1_2' class="collapse">  -->
-
-    <!-- 默认展开错误信息 -Findyou /  修复失败按钮的颜色 -- Gelomen -->
-    <button id='btn_et1_2' type="button"  class="btn btn-xs" data-toggle="collapse" data-target='#div_et1_2,#div_et1_2_screenshot'>错误</button>
-    <div id='div_et1_2' class="collapse in">
-    <pre style="text-align:left">
-    
-et1_2: hello!
-{'test_name': '验证是否能成功进行登录', 'isnot': '是', 'excepted_result': '陈娟', 'test_parameter': {'username': 'chenjuan', 'password': '1q2w3e4r,'}}
-errorImg[2.png]errorImg, browser[chrome(81.0.4044.138)]browser
-Traceback (most recent call last):
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/testcases/login_suite/login_test.py", line 20, in test_login_success
-    main_page = login_action.login_success(test_function_data['test_parameter'].get('username'), test_function_data['test_parameter'].get('password'))
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/actions/login_action.py", line 21, in login_success
-    self.login_action(username, password)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/actions/login_action.py", line 16, in login_action
-    self.login_page.input_username(username)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/element_infos/login/login_page.py", line 15, in input_username
-    self.input(self.username_inputbox, username)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/common/base_page.py", line 113, in input
-    element = self.find_element(element_info)
-  File "/Users/chenjuan/Documents/cherry/Python/pycharm/PO_UI_Test_Framework/common/base_page.py", line 101, in find_element
-    return element
-UnboundLocalError: local variable 'element' referenced before assignment
-
-
-    </pre>
-    </div>
-    </td>
-    <td class="text-center" style="vertical-align: middle"><div id='div_et1_2_screenshot' class="collapse in">浏览器版本：<div style="color: brown;">chrome(81.0.4044.138)</div></br>截图：</br><a class="screenshot" href="javascript:void(0)" img="image/2.png">img_2.png</a></div></td>
-</tr>
-
 <tr id='total_row' class="text-center active">
     <td colspan='2'>总计</td>
-    <td>2</td>
     <td>0</td>
     <td>0</td>
-    <td>2</td>
-    <td>30.44秒</td>
-    <td>通过率：0.00%</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0秒</td>
+    <td>通过率：0.00 %</td>
 </tr>
 </table>
 
